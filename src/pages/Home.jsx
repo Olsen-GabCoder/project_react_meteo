@@ -4,6 +4,7 @@ import WeatherDisplay from '../components/WeatherDisplay';
 import Forecast from '../components/Forecast';
 import LocationButton from '../components/LocationButton';
 import { fetchWeatherByCity, fetchWeatherByCoords } from '../api/weatherService';
+import '../index.css';
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -28,12 +29,14 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Application Météo</h1>
-      <SearchBar onSearch={handleSearch} />
+      <div className="search-bar">
+        <SearchBar onSearch={handleSearch} />
+      </div>
       <LocationButton onLocationFetch={handleLocationFetch} />
-      <WeatherDisplay weatherData={weatherData} />
-      <Forecast forecastData={forecastData} />
+      {weatherData && <WeatherDisplay weatherData={weatherData} />}
+      {forecastData && <Forecast forecastData={forecastData} />}
     </div>
   );
 };

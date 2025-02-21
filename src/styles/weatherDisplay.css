@@ -1,0 +1,97 @@
+/* Variables pour personnaliser facilement les couleurs et animations */
+:root {
+    --container-bg: #ffffff;
+    --container-hover-shadow: rgba(0, 0, 0, 0.2);
+    --container-padding: 20px;
+    --container-radius: 12px;
+    --font-color: #333;
+    --font-light: #555;
+    --button-bg: #4CAF50;
+    --hover-color: #4CAF50;
+    --empty-text-color: #888;
+    --transition-speed: 0.3s ease-in-out;
+    --heading-font-size: 1.5rem;
+    --body-font-size: 1rem;
+    --text-margin: 8px 0;
+  }
+  
+  /* Conteneur météo élégant */
+  .weather-container {
+    background-color: var(--container-bg);
+    border-radius: var(--container-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: var(--container-padding);
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Animation subtile lors du chargement */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Effet au survol du conteneur */
+  .weather-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px var(--container-hover-shadow);
+  }
+  
+  /* Style de l'emplacement météo */
+  .weather-location {
+    font-size: var(--heading-font-size);
+    font-weight: 600;
+    color: var(--font-color);
+    margin-bottom: 10px;
+    transition: color var(--transition-speed);
+  }
+  
+  .weather-location:hover {
+    color: var(--hover-color);
+  }
+  
+  /* Style des informations météo */
+  .weather-info {
+    font-size: var(--body-font-size);
+    color: var(--font-light);
+    margin-top: 10px;
+  }
+  
+  .weather-info p {
+    margin: var(--text-margin);
+  }
+  
+  /* Dernière ligne en gras */
+  .weather-info p:last-child {
+    font-weight: bold;
+  }
+  
+  /* Texte vide - message de fallback */
+  .weather-empty {
+    color: var(--empty-text-color);
+    font-style: italic;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 1s ease-out;
+    font-size: 1.1rem;
+  }
+  
+  /* Effet de survol sur les paragraphes */
+  .weather-container p {
+    transition: color var(--transition-speed);
+  }
+  
+  .weather-container p:hover {
+    color: var(--hover-color);
+  }
+  

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/LocationButton.css';
 
 const LocationButton = ({ onLocationFetch }) => {
   const handleLocation = () => {
@@ -17,7 +18,13 @@ const LocationButton = ({ onLocationFetch }) => {
     }
   };
 
-  return <button onClick={handleLocation}>Météo actuelle</button>;
+  return (
+    <div className="location-button-container">
+      <button className="location-button" onClick={handleLocation}>
+        🌍 Météo actuelle
+      </button>
+    </div>
+  );
 };
 
 export default LocationButton;

@@ -1,119 +1,97 @@
-/* Reset global styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+/* Style global inspiré du génie DevOps */
+:root {
+  --primary-color: #0a192f; /* Bleu foncé futuriste */
+  --secondary-color: #64ffda; /* Vert néon */
+  --accent-color: #ff4500; /* Orange dynamique */
+  --text-color: #e0e0e0;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(100, 255, 218, 0.5);
 }
 
 body {
-  background: linear-gradient(135deg, rgba(255, 195, 0, 1), rgba(255, 65, 0, 1));
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+  background: linear-gradient(135deg, #0a192f, #001f3f);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #fff;
-  font-size: 16px;
+  transition: background 0.5s ease-in-out;
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Main container */
+/* Conteneur principal */
 .app-container {
-  width: 100%;
-  max-width: 900px;
-  background: rgba(255, 255, 255, 0.85); /* Slightly transparent */
-  border-radius: 25px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px var(--border-glow);
+  max-width: 900px;
   text-align: center;
-  backdrop-filter: blur(10px); /* Smooth blurred effect behind the container */
+  border: 1px solid var(--border-glow);
   transition: transform 0.3s ease-in-out;
 }
 
 .app-container:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
-/* Heading style */
 h1 {
-  font-size: 3rem;
-  color: #ff4500;
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: 1.5px;
+  font-size: 2.8rem;
+  color: var(--secondary-color);
   text-transform: uppercase;
-  font-weight: 600;
-  animation: fadeInText 1.5s ease-out;
+  font-weight: bold;
+  animation: glowText 1.5s infinite alternate;
 }
 
-@keyframes fadeInText {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes glowText {
+  from { text-shadow: 0 0 10px var(--secondary-color); }
+  to { text-shadow: 0 0 20px var(--secondary-color), 0 0 40px var(--accent-color); }
 }
 
-/* Modern Search Bar */
+/* Barre de recherche */
 .search-bar {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .search-bar input {
-  width: 70%;
-  padding: 15px 20px;
+  width: 70%; /* Taille dynamique */
+  padding: 15px;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  font-size: 1.1rem;
-  outline: none;
-  color: #333;
+  border: none;
+  font-size: 1.2rem;
   background: rgba(255, 255, 255, 0.2);
-  transition: 0.3s ease;
-  position: relative;
-}
-
-.search-bar input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
+  outline: none;
+  transition: 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
 .search-bar input:focus {
-  border-color: #ff4500;
-  box-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
   background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px var(--secondary-color);
 }
 
-.search-bar input:focus::placeholder {
-  color: #ff4500;
-}
-
-.search-bar input:focus + .search-btn {
-  background-color: #ff6347;
-  transform: scale(1.05);
-}
-
+/* Bouton de recherche */
 .search-bar button {
-  padding: 15px 30px;
-  background-color: #ff4500;
+  width: auto; /* Bouton se redimensionne automatiquement en hauteur et largeur */
+  height: 100%; /* Exactement la même hauteur que l'input */
+  padding: 15px 25px; /* Assure que le bouton reste en proportion avec l'input */
+  background-color: var(--accent-color);
   color: #fff;
   border: none;
   border-radius: 50px;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-left: 20px;
-  box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px; /* Espacement léger entre l'input et le bouton */
+  box-sizing: border-box;
 }
 
 .search-bar button:hover {
@@ -121,92 +99,29 @@ h1 {
   transform: translateY(-3px);
 }
 
-/* Results Container */
-.results-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+.search-bar button:active {
+  transform: scale(1);
 }
 
-.result-card {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  padding: 20px;
-  border-radius: 15px;
-  margin: 10px;
-  width: 45%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Animation du fond */
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.result-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.result-card h3 {
-  font-size: 1.6rem;
-  color: #ff4500;
-  margin-bottom: 10px;
-}
-
-.result-card p {
-  font-size: 1.1rem;
-  margin: 5px 0;
-}
-
-.result-card .price {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #ff6347;
-  margin-top: 10px;
-}
-
-.result-card .description {
-  font-size: 1rem;
-  color: #666;
-  margin-top: 10px;
-}
-
-/* Location Button */
-button.location-btn {
-  padding: 18px 35px;
-  background-color: #ff6347;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-top: 25px;
-  box-shadow: 0 5px 15px rgba(255, 99, 71, 0.3);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button.location-btn:hover {
-  background-color: #ff4500;
-  transform: translateY(-3px);
-}
-
-/* Responsive design */
+/* Responsivité */
 @media (max-width: 768px) {
   .app-container {
     padding: 20px;
   }
-
-  .search-bar input {
-    width: 60%;
-  }
-
-  .search-bar button {
-    width: 35%;
-  }
-
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-
-  .result-card {
-    width: 100%;
+  .search-bar input {
+    width: 80%;
+  }
+  .search-bar button {
+    width: auto;
   }
 }

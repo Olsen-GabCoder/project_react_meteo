@@ -1,0 +1,66 @@
+/* Style avancé pour le bouton de localisation */
+:root {
+  --button-bg: linear-gradient(45deg, #0066ff, #00ccff);
+  --button-hover-bg: #0044cc;
+  --button-active-bg: #003399;
+  --button-padding: 14px 30px;
+  --border-radius: 15px;
+  --transition-speed: 0.3s ease;
+  --button-shadow: rgba(0, 102, 255, 0.5);
+  --button-text-color: white;
+  --button-font-size: 1.2rem;
+  --button-transform: scale(1.08);
+}
+
+/* Conteneur du bouton */
+.location-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Style du bouton */
+.location-button {
+  padding: var(--button-padding);
+  background: var(--button-bg);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--button-font-size);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 5px 15px var(--button-shadow);
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  min-width: 180px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Effet au survol */
+.location-button:hover {
+  background-color: var(--button-hover-bg);
+  transform: var(--button-transform);
+  box-shadow: 0 10px 25px rgba(0, 0, 255, 0.4);
+}
+
+/* Effet lors du clic */
+.location-button:active {
+  background-color: var(--button-active-bg);
+  transform: translateY(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 255, 0.6);
+}
+
+/* Animation d'apparition */
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.location-button {
+  animation: popIn 0.5s ease-in-out;
+}
